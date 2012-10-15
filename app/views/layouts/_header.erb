@@ -13,7 +13,7 @@
     <li><%= link_to "Home", '/posts' %></li>
     <li><%= link_to "Users", '/users', :class => "" %></li>
 
-    <li><%= link_to "Profile", '#' %></li>
+    <li><%= link_to "Profile", '/users/'+current_user.id.to_s+'/edit' %></li>
     +
     <% if !signed_in? %>
         <li><%= link_to "Sign In", signin_path %></li>
