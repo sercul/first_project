@@ -19,3 +19,13 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<% unless @user.posts.empty? %>
+    <br/>              <br/> <br/>
+    <h3>Posts:</h3>
+    <table class="posts" summary="User posts">
+      <%= render @posts %>
+    </table>
+    <%= will_paginate @posts %>
+<% end %>

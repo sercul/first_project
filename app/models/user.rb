@@ -1,7 +1,9 @@
 require 'digest'
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
-  has_many :microposts
+
+  has_many :posts, :dependent => :destroy
+
   validates :name, :email, :presence => true
 
   validates :password,
@@ -33,11 +35,7 @@ class User < ActiveRecord::Base
 
   def check_hz(id)
     user = User.find_by_id(id)
-    if user.nil?
-      return nil
-    else
-      return user.password
-    end
+    return user.password if user.nil?
   end
 
   private

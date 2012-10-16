@@ -6,15 +6,16 @@
   It is a <span class="italics">long</span> established fact <span class="italics">that</span> a reader<br/>
   will love your work, as long as you put all you have into the project
 </div>
-<!--tagln ends-->
 
 <div id="menulinks">
   <ul>
     <li><%= link_to "Home", '/posts' %></li>
     <li><%= link_to "Users", '/users', :class => "" %></li>
 
-    <li><%= link_to "Profile", '/users/'+current_user.id.to_s+'/edit' %></li>
-    +
+    <% if signed_in? %>
+        <li><%= link_to "Profile", '/users/' + current_user.id.to_s + '/edit' %></li>
+    <% end %>
+
     <% if !signed_in? %>
         <li><%= link_to "Sign In", signin_path %></li>
     <% else %>
